@@ -6,7 +6,7 @@
 
 using namespace std;
 
-void FileLoader::loadFile(std::string &path) {
+vector<string> FileLoader::loadFile(std::string &path) {
 
     filePath = path;
     ifstream file;
@@ -21,15 +21,19 @@ void FileLoader::loadFile(std::string &path) {
         file.open(filePath);
 
         string fileLine;
+        long fileLength;
+        fileLength = file.tellg();
 
         while (getline(file, fileLine)){
 
-            cout << "Content: ";
-            cout << fileLine << endl;
+//            cout << "Content line " << fileLength << ": ";
+//            cout << fileLine << endl;
 
-//            if (fileLine.size() > 0){
-//                fileContent.push_back(fileLine);
-//            }
+            fileLength++;
+
+            if (fileLine.size() > 0){
+                fileContent.push_back(fileLine);
+            }
         }
     } catch (exception e) {
         e.what();
@@ -37,4 +41,6 @@ void FileLoader::loadFile(std::string &path) {
     }
 
     file.close();
+
+    return fileContent;
 }

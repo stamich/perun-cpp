@@ -16,7 +16,8 @@ private:
     std::string filePath;
 
 public:
-    void loadFile(std::string &path);
+    //void loadFile(std::string &path);
+    std::vector<std::string> loadFile(std::string &path);
 };
 
 #endif //COMPILER_FILELOADER_H
