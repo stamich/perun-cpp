@@ -6,6 +6,34 @@
 
 using namespace std;
 
+list<string> FileLoader::loadToList(std::string &path) {
+    filePath = path;
+    ifstream file;
+    list<string> content;
+
+    if (filePath.length() == 0){
+        cout << "filepath is empty!" << endl;
+    }
+
+    try {
+        file.open(filePath);
+
+        string fileLine;
+
+        while (getline(file, fileLine)){
+
+            content.push_back(fileLine);
+        }
+
+    } catch (exception e){
+        e.what();
+        file.close();
+    }
+
+    file.close();
+    return content;
+}
+
 vector<string> FileLoader::loadFile(std::string &path) {
 
     filePath = path;

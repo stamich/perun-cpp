@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <list>
 #include <iterator>
 #include <sstream>
 #include "FileLoader.h"
@@ -19,6 +20,15 @@ int main() {
     //auto content;
 
     FileLoader loader;
+
+    list<string> contentList = loader.loadToList(path);
+
+    for (auto const& item: contentList){
+        cout << item << endl;
+    }
+
+    cout << "CONTAINER" << endl;
+
     vector<string> content = loader.loadFile(path);
 
     for (auto const& item: content){

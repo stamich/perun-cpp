@@ -8,6 +8,7 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <list>
 #include <vector>
 
 class FileLoader {
@@ -17,6 +18,7 @@ private:
 
 public:
     //void loadFile(std::string &path);
+    std::list<std::string> loadToList(std::string& path);
     std::vector<std::string> loadFile(std::string &path);
 };
 
