@@ -11,13 +11,25 @@ using namespace std;
 //    LexicalAnalyzer lexicalAnalyzer(s);
 //}
 
-bool LexicalAnalyzer::is_operator(const string &s) {
+bool LexicalAnalyzer::is_operator(const string& s) {
+
     const vector<string> operators{"<", ">", "<=", ">=", "*", "+", "-", "/", "=", "-=", "*=", "+=", "/=", "++", "--", "=="};
+//    const vector<char> data;
+//    copy(s.begin(), s.end(), back_inserter(data));
     for(const auto& op : operators){
-        if (op == s){
+        //const string *p = &s;
+        cout << s << " vs: " << op << endl;
+
+        while (s == op){
+            cout << s << " is true\r\n";
+        }
+
+        if (s == op){
+            cout << "True\r\n";
             return true;
         }
     }
+    cout << "False\r\n";
     return false;
 }
 

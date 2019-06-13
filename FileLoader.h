@@ -10,6 +10,7 @@
 #include <string>
 #include <list>
 #include <vector>
+#include <set>
 
 class FileLoader {
 
@@ -19,7 +20,8 @@ private:
 public:
     //void loadFile(std::string &path);
     std::list<std::string> loadToList(std::string& path);
-    std::vector<std::string> loadFile(std::string &path);
+    std::set<std::string> loadToSet(std::string& path);
+    std::vector<std::string> loadToVector(std::string &path);
 };
 
 #endif //COMPILER_FILELOADER_H

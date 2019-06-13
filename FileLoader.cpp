@@ -34,8 +34,35 @@ list<string> FileLoader::loadToList(std::string &path) {
     return content;
 }
 
-vector<string> FileLoader::loadFile(std::string &path) {
+std::set<std::string> FileLoader::loadToSet(std::string &path) {
+    filePath = path;
+    ifstream file;
+    set<string> content;
 
+    if (filePath.length() == 0){
+        cout << "filepath is empty!" << endl;
+    }
+
+    try {
+        file.open(filePath);
+
+        string fileLine;
+
+        while (getline(file, fileLine)){
+
+            content.insert(fileLine);
+        }
+
+    } catch (exception e){
+        e.what();
+        file.close();
+    }
+
+    file.close();
+    return content;
+}
+
+vector<string> FileLoader::loadToVector(std::string &path) {
     filePath = path;
     ifstream file;
     vector<string> fileContent;
