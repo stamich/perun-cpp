@@ -13,7 +13,7 @@ bool LexicalAnalyzer::isOperator(const string& s) {
     for (const auto& op: operators){
 
         if (s == op){
-            cout << "value: " << s << " matches to: " << op << endl;
+            cout << "value: " << s << " matches to: " << op << " operator." << endl;
             return true;
         }
     }

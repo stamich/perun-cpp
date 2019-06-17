@@ -23,7 +23,7 @@ int main() {
     FileLoader loader;
     LexicalAnalyzer la;
 
-    string a = "+";
+    //string a = "+";
 
     vector<string> content = loader.loadToVector(path);
 
@@ -50,6 +50,17 @@ int main() {
         cout << d << " to nie liczba zmiennoprzec.\r\n";
     }
 
+    if (la.isDouble(e)) {
+        cout << e << " to liczba zmiennoprzec.\r\n";
+    } else {
+        cout << e << " to nie liczba zmiennoprzec.\r\n";
+    }
+
+    if (la.isDouble(f)) {
+        cout << f << " to liczba zmiennoprzec.\r\n";
+    } else {
+        cout << f << " to nie liczba zmiennoprzec.\r\n";
+    }
 
 //    int element;
 //
