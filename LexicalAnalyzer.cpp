@@ -14,22 +14,31 @@ using namespace std;
 bool LexicalAnalyzer::is_operator(const string& s) {
 
     const vector<string> operators{"<", ">", "<=", ">=", "*", "+", "-", "/", "=", "-=", "*=", "+=", "/=", "++", "--", "=="};
-//    const vector<char> data;
-//    copy(s.begin(), s.end(), back_inserter(data));
+
+    string temp;
+    bool result;
+
     for(const auto& op : operators){
-        //const string *p = &s;
-        cout << s << " vs: " << op << endl;
 
-        while (s == op){
-            cout << s << " is true\r\n";
-        }
+        temp = op.c_str();
+        result = s.compare(temp);
 
-        if (s == op){
-            cout << "True\r\n";
+        while (s == temp){
+            cout << temp << " matches to " << s << " ";
             return true;
         }
+//        cout << "operator: " << op << endl;
+//
+//        if (s == temp){
+//            cout << "True\r\n";
+//            return true;
+//        } else {
+//            cout << "For: " << temp << " is: ";
+//            cout << "False\r\n";
+//            return false;
+//        }
     }
-    cout << "False\r\n";
+    cout << s << " not matches to: " << temp << endl;
     return false;
 }
 

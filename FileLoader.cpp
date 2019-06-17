@@ -2,9 +2,34 @@
 // Created by EB79OJ on 2019-06-10.
 //
 
+#include <cstring>
 #include "FileLoader.h"
 
 using namespace std;
+
+string FileLoader::loadAsString(std::string &path) {
+    filePath = path;
+    ifstream file;
+    string fileLine;
+
+    string content;
+
+    try {
+        file.open(filePath);
+
+        content.assign(fileLine);
+
+        while (getline(file, fileLine)){
+
+            content.assign(fileLine);
+        }
+    } catch (exception e){
+        e.what();
+        file.close();
+    }
+    file.close();
+    return content;
+}
 
 list<string> FileLoader::loadToList(std::string &path) {
     filePath = path;
