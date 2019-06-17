@@ -6,61 +6,63 @@
 
 using namespace std;
 
-//LexicalAnalyzer::LexicalAnalyzer(string s) {
-//    input = s;
-//    LexicalAnalyzer lexicalAnalyzer(s);
-//}
+bool LexicalAnalyzer::isOperator(const string& s) {
 
-bool LexicalAnalyzer::is_operator(const string& s) {
+    const vector<string> operators{"+", "-", "*", "/", "=", "+="};
 
-    const vector<string> operators{"<", ">", "<=", ">=", "*", "+", "-", "/", "=", "-=", "*=", "+=", "/=", "++", "--", "=="};
+    for (const auto& op: operators){
 
-    string temp;
-    bool result;
-
-    for(const auto& op : operators){
-
-        temp = op.c_str();
-        result = s.compare(temp);
-
-        while (s == temp){
-            cout << temp << " matches to " << s << " ";
+        if (s == op){
+            cout << "value: " << s << " matches to: " << op << endl;
             return true;
         }
-//        cout << "operator: " << op << endl;
-//
-//        if (s == temp){
-//            cout << "True\r\n";
-//            return true;
-//        } else {
-//            cout << "For: " << temp << " is: ";
-//            cout << "False\r\n";
-//            return false;
-//        }
     }
-    cout << s << " not matches to: " << temp << endl;
-    return false;
+    cout << "value: " << s << " not matches to any operator \r\n";
 }
 
-bool LexicalAnalyzer::is_round_bracket(const string &s) {
+bool LexicalAnalyzer::isRoundBracket(const string& s) {
+
     const vector<string> brackets{"(", ")"};
+
     for (const auto& br: brackets){
-        if (br == s){
+        if (s == br){
+            cout << "value: " << s << " is round bracket\r\n";
             return true;
         }
     }
+    cout << "value: " << s << " is not round bracket\r\n";
     return false;
 }
 
-bool LexicalAnalyzer::is_integer(const string &s) {
+bool LexicalAnalyzer::isDigit(const string &s) {
+    auto result = double();
+    auto i = istringstream(s);
+    i >> result;
+    i >> ws;
+    return (!i.fail() && i.eof());
+}
+
+bool LexicalAnalyzer::isInteger(const string& s) {
     return all_of(s.begin(), s.end(), ::isdigit);
 }
 
-bool LexicalAnalyzer::is_double(const string &s) {
-    return all_of(s.begin(), s.end(), ::isdigit);
+bool LexicalAnalyzer::isDouble(const string& s) {
+
+    size_t dot = s.find(".");
+    if (dot != string::npos){
+        return true;
+    }
+    return false;
+//    char* c = strdup(s.c_str());
+//
+//    if (strtok(c, ".")){
+//        free(c);
+//        return true;
+//    }
+//    return false;
 }
 
-bool LexicalAnalyzer::is_id(const string &s) {
+bool LexicalAnalyzer::isId(const std::string &s) {
     if (isdigit(s[0])){
         return false;
     }
@@ -78,32 +80,32 @@ bool LexicalAnalyzer::is_id(const string &s) {
     }
 }
 
-bool LexicalAnalyzer::is_not_legal(const string &s){
+bool LexicalAnalyzer::isNotLegal(const string &s){
     return s == " " || s == "\n";
 }
 
-bool LexicalAnalyzer::is_comment(const string &s) {
+bool LexicalAnalyzer::isComment(const string &s) {
     return s == "/*" || s == "//";
 }
 
-void LexicalAnalyzer::print_role_of_token(const string &token) {
-    if (is_operator(token)){
+void LexicalAnalyzer::printRoleOfToken(const string &token) {
+    if (isOperator(token)){
         cout << "(is operator, " << token << ")";
     }
-    else if(is_round_bracket(token)){
+    else if(isRoundBracket(token)){
         cout << "(separator, " << token << ")";
     }
 
-    else if(is_integer(token)){
+    else if(isInteger(token)){
         cout << "(keyword, " << token << ")";
     }
-    else if(is_double(token)){
+    else if(isDouble(token)){
         cout << "(statement, " << token << ")";
     }
-    else if(is_id(token)){
+    else if(isId(token)){
         cout << "(literal, " << token << ")";
     }
-    else if(is_comment(token)){
+    else if(isComment(token)){
         cout << "(identifier, " << token << ")";
     }
     else{
@@ -144,7 +146,7 @@ void LexicalAnalyzer::analyze(const string &nameOfFile) {
             std::string comm(1, ch);
             file >> ch;
             if (ch == EOF) {
-                print_role_of_token(comm);
+                printRoleOfToken(comm);
                 break;
             }
 
@@ -156,7 +158,7 @@ void LexicalAnalyzer::analyze(const string &nameOfFile) {
                 comm += ch;
             }
             if (miltiCm || singleCm) {
-                print_role_of_token(comm);
+                printRoleOfToken(comm);
                 continue;
             }
         }
@@ -169,9 +171,9 @@ void LexicalAnalyzer::analyze(const string &nameOfFile) {
 //            continue;
 //        }
 
-        if (is_operator(string(1, ch))) {
-            if (!buffer.empty() && !is_operator(buffer)) {
-                print_role_of_token(buffer);
+        if (isOperator(string(1, ch))) {
+            if (!buffer.empty() && !isOperator(buffer)) {
+                printRoleOfToken(buffer);
                 buffer = "";
             }
         }

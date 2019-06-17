@@ -23,13 +23,42 @@ int main() {
     FileLoader loader;
     LexicalAnalyzer la;
 
-    string a = "+=";
+    string a = "+";
 
     vector<string> content = loader.loadToVector(path);
 
-    for (string const& item : content){
-        la.is_operator(a);
+    //-------------------------------------------------
+    string a = "+";
+    string b = "(";
+    string c = "12";
+    string d = "10.1";
+    string e = "3.1415926";
+    string f = "aaa";
+
+    la.isOperator(a);
+    la.isRoundBracket(b);
+
+    if (la.isInteger(c)){
+        cout << c << " to liczba int.\r\n";
+    } else {
+        cout << c << " to nie liczba int.\r\n";
     }
+
+    if (la.isDouble(d)) {
+        cout << d << " to liczba zmiennoprzec.\r\n";
+    } else {
+        cout << d << " to nie liczba zmiennoprzec.\r\n";
+    }
+
+
+//    int element;
+//
+//    for (string const& item : content){
+//        //la.is_operator(item);
+//        cout << "element " << element << ": " << item << endl;
+//        la.is_operator(item);
+//        element++;
+//    }
 
 //    cout << "cap.: " << content.capacity();
 //    cout << endl;
@@ -80,5 +109,6 @@ int main() {
 //    string toString(content.begin(), content.end() - 1);
 //    cout << la.is_operator(toString) << endl;
 //    la.analyze("input.txt");
+
     return 0;
 }
