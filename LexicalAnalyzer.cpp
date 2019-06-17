@@ -63,9 +63,11 @@ bool LexicalAnalyzer::isDouble(const string& s) {
 }
 
 bool LexicalAnalyzer::isId(const std::string &s) {
+
     if (isdigit(s[0])){
         return false;
     }
+
     int counter = 0;
 
     if (s[0] == '_'){
@@ -81,7 +83,13 @@ bool LexicalAnalyzer::isId(const std::string &s) {
 }
 
 bool LexicalAnalyzer::isNotLegal(const string &s){
-    return s == " " || s == "\n";
+
+    if (s == "\n" || s == "\r\n"){
+        return true;
+    }
+    return false;
+
+    //return s == " " || s == "\n";
 }
 
 bool LexicalAnalyzer::isComment(const string &s) {

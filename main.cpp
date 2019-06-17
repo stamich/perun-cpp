@@ -34,6 +34,7 @@ int main() {
     string d = "10.1";
     string e = "3.1415926";
     string f = "aaa";
+    string g = "g34te4";
 
     la.isOperator(a);
     la.isRoundBracket(b);
@@ -61,6 +62,8 @@ int main() {
     } else {
         cout << f << " to nie liczba zmiennoprzec.\r\n";
     }
+
+    cout << "id: " << la.isId(g);
 
 //    int element;
 //
