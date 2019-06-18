@@ -117,10 +117,10 @@ bool LexicalAnalyzer::isId(const std::string &s) {
     }
 }
 
-// Method returns values in both cases - for Windows eol (\r\n) and for Linux systems (\n)
+// Method returns values in both cases - for Windows eol (\r\n - carriage return and line feed) and for Linux systems (\n - just line feed)
 bool LexicalAnalyzer::isEndOfLine(const string &s){
 
-    if (s.find("\n") != string::npos){
+    if (((s.find("\n") || (s.find("\r\n"))) != string::npos)){
         return true;
     }
     return false;
@@ -136,7 +136,7 @@ bool LexicalAnalyzer::isComment(const string &s) {
 }
 
 // Method counts all characters in file
-int LexicalAnalyzer::charCounter(const std::string &s) {
+int LexicalAnalyzer::charCount(const std::string &s) {
     int counter = 0;
     for (size_t i = 0; i <= s.size(); i++){
         counter++;

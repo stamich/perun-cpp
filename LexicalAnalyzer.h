@@ -33,7 +33,7 @@ public:
     bool isComment(const std::string& s);
     bool isEndOfLine(const std::string &s);
 
-    int charCounter(const std::string& s);
+    int charCount(const std::string& s);
 
     void printRoleOfToken(const std::string& token);
 
