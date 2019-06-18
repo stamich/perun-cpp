@@ -135,6 +135,15 @@ bool LexicalAnalyzer::isComment(const string &s) {
     return false;
 }
 
+// Method counts all characters in file
+int LexicalAnalyzer::charCounter(const std::string &s) {
+    int counter = 0;
+    for (size_t i = 0; i <= s.size(); i++){
+        counter++;
+    }
+    return counter;
+}
+
 void LexicalAnalyzer::printRoleOfToken(const string& token) {
 
     if (isOperator(token)){
