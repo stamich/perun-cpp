@@ -1,3 +1,6 @@
+//
+// Created by Michal S. on 2019-05-07.
+//
 #include <iostream>
 #include <string>
 #include <vector>
@@ -27,6 +30,32 @@ int main() {
 
     vector<string> content = loader.loadToVector(path);
 
+    cout << "Type a char: ";
+    char inputData;
+    cin >> inputData;
+
+    string input;
+    input.push_back(inputData);
+    // "<", ">", "<=", ">=", "*", "+", "-", "/", "=", "-=", "*=", "+=", "/=", "++", "--", "=="
+    switch (inputData){
+        case '<':
+        case '>':
+        case '<=':
+        case '>=':
+        case '+':
+        case '-':
+        case '*':
+        case '/':
+        case '=':
+        case '+=':
+        case '-=':
+        case '*=':
+        case '/=':
+        case '==': cout << la.isOperator(input) << endl;
+
+        //default: cout << "not a operator";
+    }
+
     //-------------------------------------------------
     string a = "+";
     string b = "(";
@@ -35,9 +64,12 @@ int main() {
     string e = "3.1415926";
     string f = "aaa";
     string g = "g34te4";
+    string h = "rge4t34\n";
+    string i = "//comment";
+    string j = "/*comment*/";
 
-    la.isOperator(a);
-    la.isRoundBracket(b);
+    cout << "operator: " << la.isOperator(a) << endl;
+    cout << "nawias: " << la.isRoundBracket(b) << endl;
 
     if (la.isInteger(c)){
         cout << c << " to liczba int.\r\n";
@@ -63,8 +95,19 @@ int main() {
         cout << f << " to nie liczba zmiennoprzec.\r\n";
     }
 
-    cout << "id: " << la.isId(g);
+    if (la.isId(g)) {
+        cout << g << " to jest id.\r\n";
+    } else {
+        cout << g << " to nie jest id.\r\n";
+    }
 
+    cout << la.isEndOfLine(c) << endl;
+    cout << la.isEndOfLine(g) << endl;
+    cout << la.isEndOfLine(h) << endl;
+
+    cout << la.isComment(h) << endl;
+    cout << la.isComment(i) << endl;
+    cout << la.isComment(j) << endl;
 //    int element;
 //
 //    for (string const& item : content){

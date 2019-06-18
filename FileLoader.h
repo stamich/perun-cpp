@@ -1,5 +1,5 @@
 //
-// Created by EB79OJ on 2019-06-10.
+// Created by Michal S. on 2019-05-07.
 //
 
 #ifndef COMPILER_FILELOADER_H
@@ -7,6 +7,7 @@
 
 #include <iostream>
 #include <fstream>
+#include <cstring>
 #include <string>
 #include <list>
 #include <vector>

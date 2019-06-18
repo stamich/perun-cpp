@@ -1,5 +1,5 @@
 //
-// Created by EB79OJ on 2019-06-07.
+// Created by Michal S. on 2019-05-07.
 //
 
 #ifndef COMPILER_LEXICALANALYZER_H
@@ -23,16 +23,19 @@ public:
 
     bool isOperator(const std::string& s);
     bool isRoundBracket(const std::string& s);
+    bool isSquareBracket(const std::string& s);
+    bool isCurlyBracket(const std::string& s);
+    bool isAngleBracket(const std::string& s);
     bool isDigit(const std::string& s);
     bool isInteger(const std::string& s);
     bool isDouble(const std::string& s);
     bool isId(const std::string& s);
     bool isComment(const std::string& s);
-    bool isNotLegal(const std::string &s);
+    bool isEndOfLine(const std::string &s);
 
     void printRoleOfToken(const std::string& token);
 
-    void analyze(const std::string &nameOfFile);
+    void analyze(const std::string& nameOfFile);
 
     ~LexicalAnalyzer();
 };

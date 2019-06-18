@@ -1,8 +1,6 @@
 //
-// Created by EB79OJ on 2019-06-10.
+// Created by Michal S. on 2019-05-07.
 //
-
-#include <cstring>
 #include "FileLoader.h"
 
 using namespace std;
