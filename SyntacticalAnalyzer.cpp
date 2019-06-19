@@ -3,6 +3,18 @@
 //
 #include "SyntacticalAnalyzer.h"
 
+bool SyntacticalAnalyzer::isExpression(std::vector<std::string> tokens) {
+
+}
+
+bool SyntacticalAnalyzer::isComponent(std::vector<std::string> tokens) {
+
+}
+
+bool SyntacticalAnalyzer::isFactor(std::vector<std::string> tokens) {
+
+}
+
 bool SyntacticalAnalyzer::isTermrminalChar(std::string &s) {
 
     return false;

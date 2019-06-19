@@ -29,6 +29,37 @@ string FileLoader::loadAsString(std::string &path) {
     return content;
 }
 
+array<string, 20> FileLoader::loadAsArray(string& path) {
+    filePath = path;
+    ifstream file;
+    string fileLine;
+
+    array<string, 20> a;
+    string content;
+
+    try {
+        file.open(filePath);
+
+        content.assign(fileLine);
+
+        for (size_t i = 0; i <= a.size() - 1; i++){
+            content.assign(fileLine);
+            a[i] = content;
+        }
+
+//        while (getline(file, fileLine)){
+//
+//            content.assign(fileLine);
+//            a.
+//        }
+    } catch (exception e){
+        e.what();
+        file.close();
+    }
+    file.close();
+    return a;
+}
+
 list<string> FileLoader::loadToList(std::string &path) {
     filePath = path;
     ifstream file;

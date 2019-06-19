@@ -12,6 +12,15 @@
 
 class SyntacticalAnalyzer {
 
+    // wyrazenie - w
+    bool isExpression(std::vector<std::string> tokens);
+
+    // skladnik - s
+    bool isComponent(std::vector<std::string> tokens);
+
+    // czynnik - c
+    bool isFactor(std::vector<std::string> tokens);
+
     bool isTermrminalChar(std::string& s);
     char* nonTerminalType(std::string& s);
     char* terminalType(std::string& s);

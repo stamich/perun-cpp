@@ -8,6 +8,7 @@
 #include <iostream>
 #include <fstream>
 #include <cstring>
+#include <array>
 #include <string>
 #include <list>
 #include <vector>
@@ -21,6 +22,7 @@ private:
 public:
     //void loadFile(std::string &path);
     std::string loadAsString(std::string& path);
+    std::array<std::string, 20> loadAsArray(std::string& path);
     std::list<std::string> loadToList(std::string& path);
     std::set<std::string> loadToSet(std::string& path);
     std::vector<std::string> loadToVector(std::string &path);

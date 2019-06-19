@@ -4,6 +4,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <array>
 #include <list>
 #include <set>
 #include <iterator>
@@ -18,7 +19,8 @@ int main() {
     string path = "";
     cout << "Podaj sciezke do pliku: ";
     //path = "C:\\Users\\EB79OJ\\Projects\\CLionProjects\\compiler\\input.txt";
-    path = "C:\\Users\\mski\\CLionProjects\\perun\\input.txt";
+    //path = "C:\\Users\\mski\\CLionProjects\\perun\\input.txt";
+    path = "/home/michal/CLionProjects/perun/input.txt";
     //cin >> path;
     cout << "\r\n" << "Laduje plik: " << path  << " ..." << endl;
 
@@ -30,6 +32,7 @@ int main() {
     //string a = "+";
 
     vector<string> content = loader.loadToVector(path);
+    array<string, 20> arr = loader.loadAsArray(path);
 
     for (size_t i = 0; i <= content.size() - 1; i++){
         cout << i << ": ";
