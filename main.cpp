@@ -17,7 +17,8 @@ int main() {
 
     string path = "";
     cout << "Podaj sciezke do pliku: ";
-    path = "C:\\Users\\EB79OJ\\Projects\\CLionProjects\\compiler\\input.txt";
+    //path = "C:\\Users\\EB79OJ\\Projects\\CLionProjects\\compiler\\input.txt";
+    path = "C:\\Users\\mski\\CLionProjects\\perun\\input.txt";
     //cin >> path;
     cout << "\r\n" << "Laduje plik: " << path  << " ..." << endl;
 
@@ -30,15 +31,20 @@ int main() {
 
     vector<string> content = loader.loadToVector(path);
 
-    string a = "fiat";
-    string b = "125";
-    string c = "1591.25";
-    string d = "\r\n";
+    for (size_t i = 0; i <= content.size() - 1; i++){
+        cout << i << ": ";
+        la.printRoleOfToken(content[i]);
+    }
 
-    la.printRoleOfToken(a);
-    la.printRoleOfToken(b);
-    la.printRoleOfToken(c);
-    la.printRoleOfToken(d);
+//    string a = "fiat";
+//    string b = "125";
+//    string c = "1591.25";
+//    string d = "\r\n";
+//
+//    la.printRoleOfToken(a);
+//    la.printRoleOfToken(b);
+//    la.printRoleOfToken(c);
+//    la.printRoleOfToken(d);
 //    cout << "Type a char: ";
 //    char inputData;
 //    cin >> inputData;
