@@ -30,84 +30,95 @@ int main() {
 
     vector<string> content = loader.loadToVector(path);
 
-    cout << "Type a char: ";
-    char inputData;
-    cin >> inputData;
+    string a = "fiat";
+    string b = "125";
+    string c = "1591.25";
+    string d = "\r\n";
 
-    string input;
-    input.push_back(inputData);
-    // "<", ">", "<=", ">=", "*", "+", "-", "/", "=", "-=", "*=", "+=", "/=", "++", "--", "=="
-    switch (inputData){
-        case '<':
-        case '>':
-        case '<=':
-        case '>=':
-        case '+':
-        case '-':
-        case '*':
-        case '/':
-        case '=':
-        case '+=':
-        case '-=':
-        case '*=':
-        case '/=':
-        case '==': cout << la.isOperator(input) << endl;
+    la.printRoleOfToken(a);
+    la.printRoleOfToken(b);
+    la.printRoleOfToken(c);
+    la.printRoleOfToken(d);
+//    cout << "Type a char: ";
+//    char inputData;
+//    cin >> inputData;
+//
+//    string input;
+//    input.push_back(inputData);
+//    // "<", ">", "<=", ">=", "*", "+", "-", "/", "=", "-=", "*=", "+=", "/=", "++", "--", "=="
+//    switch (inputData){
+//        case '<':
+//        case '>':
+//        case '<=':
+//        case '>=':
+//        case '+':
+//        case '-':
+//        case '*':
+//        case '/':
+//        case '=':
+//        case '+=':
+//        case '-=':
+//        case '*=':
+//        case '/=':
+//        case '==': cout << la.isOperator(input) << endl;
+//
+//        //default: cout << "not a operator";
+//    }
+//
+//    //-------------------------------------------------
+//    string a = "+";
+//    string b = "(";
+//    string c = "12";
+//    string d = "10.1";
+//    string e = "3.1415926";
+//    string f = "aaa";
+//    string g = "g34te4";
+//    string h = "rge4t34\n";
+//    string i = "//comment";
+//    string j = "/*comment*/";
+//
+//    cout << "operator: " << la.isOperator(a) << endl;
+//    cout << "nawias: " << la.isRoundBracket(b) << endl;
+//
+//    if (la.isInteger(c)){
+//        cout << c << " to liczba int.\r\n";
+//    } else {
+//        cout << c << " to nie liczba int.\r\n";
+//    }
+//
+//    if (la.isDouble(d)) {
+//        cout << d << " to liczba zmiennoprzec.\r\n";
+//    } else {
+//        cout << d << " to nie liczba zmiennoprzec.\r\n";
+//    }
+//
+//    if (la.isDouble(e)) {
+//        cout << e << " to liczba zmiennoprzec.\r\n";
+//    } else {
+//        cout << e << " to nie liczba zmiennoprzec.\r\n";
+//    }
+//
+//    if (la.isDouble(f)) {
+//        cout << f << " to liczba zmiennoprzec.\r\n";
+//    } else {
+//        cout << f << " to nie liczba zmiennoprzec.\r\n";
+//    }
+//
+//    if (la.isId(g)) {
+//        cout << g << " to jest id.\r\n";
+//    } else {
+//        cout << g << " to nie jest id.\r\n";
+//    }
+//
+//    cout << la.isEndOfLine(c) << endl;
+//    cout << la.isEndOfLine(g) << endl;
+//    cout << la.isEndOfLine(h) << endl;
+//
+//    cout << la.isComment(h) << endl;
+//    cout << la.isComment(i) << endl;
+//    cout << la.isComment(j) << endl;
 
-        //default: cout << "not a operator";
-    }
-
-    //-------------------------------------------------
-    string a = "+";
-    string b = "(";
-    string c = "12";
-    string d = "10.1";
-    string e = "3.1415926";
-    string f = "aaa";
-    string g = "g34te4";
-    string h = "rge4t34\n";
-    string i = "//comment";
-    string j = "/*comment*/";
-
-    cout << "operator: " << la.isOperator(a) << endl;
-    cout << "nawias: " << la.isRoundBracket(b) << endl;
-
-    if (la.isInteger(c)){
-        cout << c << " to liczba int.\r\n";
-    } else {
-        cout << c << " to nie liczba int.\r\n";
-    }
-
-    if (la.isDouble(d)) {
-        cout << d << " to liczba zmiennoprzec.\r\n";
-    } else {
-        cout << d << " to nie liczba zmiennoprzec.\r\n";
-    }
-
-    if (la.isDouble(e)) {
-        cout << e << " to liczba zmiennoprzec.\r\n";
-    } else {
-        cout << e << " to nie liczba zmiennoprzec.\r\n";
-    }
-
-    if (la.isDouble(f)) {
-        cout << f << " to liczba zmiennoprzec.\r\n";
-    } else {
-        cout << f << " to nie liczba zmiennoprzec.\r\n";
-    }
-
-    if (la.isId(g)) {
-        cout << g << " to jest id.\r\n";
-    } else {
-        cout << g << " to nie jest id.\r\n";
-    }
-
-    cout << la.isEndOfLine(c) << endl;
-    cout << la.isEndOfLine(g) << endl;
-    cout << la.isEndOfLine(h) << endl;
-
-    cout << la.isComment(h) << endl;
-    cout << la.isComment(i) << endl;
-    cout << la.isComment(j) << endl;
+//-------------------------------------------------------------
 //    int element;
 //
 //    for (string const& item : content){

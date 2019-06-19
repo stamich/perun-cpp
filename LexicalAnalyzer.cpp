@@ -6,7 +6,7 @@
 
 using namespace std;
 
-// Method resturns boolean values in case of operators
+// Function returns boolean values in case of operators
 bool LexicalAnalyzer::isOperator(const string& s) {
 
     const vector<string> operators{"<", ">", "<=", ">=", "*", "+", "-", "/", "=", "-=", "*=", "+=", "/=", "++", "--", "=="};
@@ -22,7 +22,7 @@ bool LexicalAnalyzer::isOperator(const string& s) {
     return false;
 }
 
-// Method resturns boolean values in case of round brackets ( )
+// Function returns boolean values in case of round brackets ( )
 bool LexicalAnalyzer::isRoundBracket(const string& s) {
 
     const vector<string> brackets{"(", ")"};
@@ -37,7 +37,7 @@ bool LexicalAnalyzer::isRoundBracket(const string& s) {
     return false;
 }
 
-// Method resturns boolean values in case of square brackets [ ]
+// Function returns boolean values in case of square brackets [ ]
 bool LexicalAnalyzer::isSquareBracket(const std::string &s) {
 
     const vector<string> brackets{"[", "]"};
@@ -49,7 +49,7 @@ bool LexicalAnalyzer::isSquareBracket(const std::string &s) {
     return false;
 }
 
-// Method resturns boolean values in case of curly brackets { }
+// Function returns boolean values in case of curly brackets { }
 bool LexicalAnalyzer::isCurlyBracket(const std::string &s) {
 
     const vector<string> brackets{"{", "}"};
@@ -61,7 +61,7 @@ bool LexicalAnalyzer::isCurlyBracket(const std::string &s) {
     return false;
 }
 
-// Method returns boolean values in case of angle brackets < >
+// Function returns boolean values in case of angle brackets < >
 bool LexicalAnalyzer::isAngleBracket(const std::string &s) {
 
     const vector<string> brackets{"<", ">"};
@@ -73,7 +73,7 @@ bool LexicalAnalyzer::isAngleBracket(const std::string &s) {
     return false;
 }
 
-// Method returns boolean values in case of digit (integer and double/float)
+// Function returns boolean values in case of digit (integer and double/float)
 bool LexicalAnalyzer::isDigit(const string &s) {
     auto result = double();
     auto i = istringstream(s);
@@ -82,12 +82,12 @@ bool LexicalAnalyzer::isDigit(const string &s) {
     return (!i.fail() && i.eof());
 }
 
-// Method returns boolean values for integers
+// Function returns boolean values for integers
 bool LexicalAnalyzer::isInteger(const string& s) {
     return all_of(s.begin(), s.end(), ::isdigit);
 }
 
-// Method returns boolean values for double precision or floating point numbers
+// Function returns boolean values for double precision or floating point numbers
 bool LexicalAnalyzer::isDouble(const string& s) {
 
     size_t dot = s.find(".");
@@ -97,7 +97,7 @@ bool LexicalAnalyzer::isDouble(const string& s) {
     return false;
 }
 
-// Method returns boolean values for id string
+// Function returns boolean values for id string
 bool LexicalAnalyzer::isId(const std::string &s) {
 
     if (isdigit(s[0])){
@@ -117,7 +117,7 @@ bool LexicalAnalyzer::isId(const std::string &s) {
     }
 }
 
-// Method returns values in both cases - for Windows eol (\r\n - carriage return and line feed) and for Linux systems (\n - just line feed)
+// Function returns values in both cases - for Windows eol (\r\n - carriage return and line feed) and for Linux systems (\n - just line feed)
 bool LexicalAnalyzer::isEndOfLine(const string &s){
 
     if (((s.find("\n") || (s.find("\r\n"))) != string::npos)){
@@ -126,7 +126,7 @@ bool LexicalAnalyzer::isEndOfLine(const string &s){
     return false;
 }
 
-// Method returns boolean values in case of comment
+// Function returns boolean values in case of comment
 bool LexicalAnalyzer::isComment(const string &s) {
 
     while ((s.find("/*") != string::npos) || (s.find("//") != string::npos)){
@@ -135,7 +135,7 @@ bool LexicalAnalyzer::isComment(const string &s) {
     return false;
 }
 
-// Method counts all characters in file
+// Function counts all the characters in file
 int LexicalAnalyzer::charCount(const std::string &s) {
     int counter = 0;
     for (size_t i = 0; i <= s.size(); i++){
@@ -144,26 +144,45 @@ int LexicalAnalyzer::charCount(const std::string &s) {
     return counter;
 }
 
+// Function prints the role of token
 void LexicalAnalyzer::printRoleOfToken(const string& token) {
 
     if (isOperator(token)){
-        cout << "(is operator, " << token << ")";
+        cout << "(is operator, " << token << ")\n";
     }
     else if(isRoundBracket(token)){
-        cout << "(separator, " << token << ")";
+        cout << "(separator, " << token << ")\n";
     }
-
+    else if(isSquareBracket(token)){
+        cout << "[separator, " << token << "]\n";
+    }
+    else if(isCurlyBracket(token)){
+        cout << "{separator, " << token << "}\n";
+    }
+    else if(isAngleBracket(token)){
+        cout << "<separator, " << token << ">\n";
+    }
+//    else if(isDigit(token)){
+//        cout << "(digit, " << token << ")\n";
+//    }
     else if(isInteger(token)){
-        cout << "(keyword, " << token << ")";
+        cout << "(is integer, " << token << ")\n";
     }
     else if(isDouble(token)){
-        cout << "(statement, " << token << ")";
+        cout << "(is double, " << token << ")\n";
     }
     else if(isId(token)){
-        cout << "(literal, " << token << ")";
+        cout << "(is id, " << token << ")\n";
     }
     else if(isComment(token)){
-        cout << "(identifier, " << token << ")";
+        cout << "(identifier, " << token << ")\n";
+    }
+    else if(isEndOfLine(token)){
+        if (token == "\r\n"){
+            cout << "(is windows end of line - \\r\\n)\n";
+        } else{
+            cout << "(is linux/unix end of line - \\n)\n";
+        }
     }
     else{
         throw runtime_error(token);
