@@ -18,9 +18,9 @@ int main() {
 
     string path = "";
     cout << "Podaj sciezke do pliku: ";
-    //path = "C:\\Users\\EB79OJ\\Projects\\CLionProjects\\compiler\\input.txt";
+    path = "C:\\Users\\EB79OJ\\Projects\\CLionProjects\\compiler\\input.txt";
     //path = "C:\\Users\\mski\\CLionProjects\\perun\\input.txt";
-    path = "/home/michal/CLionProjects/perun/input.txt";
+    //path = "/home/michal/CLionProjects/perun/input.txt";
     //cin >> path;
     cout << "\r\n" << "Laduje plik: " << path  << " ..." << endl;
 

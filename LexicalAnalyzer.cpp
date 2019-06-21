@@ -64,9 +64,10 @@ bool LexicalAnalyzer::isCurlyBracket(const std::string &s) {
 // Function returns boolean values in case of angle brackets < >
 bool LexicalAnalyzer::isAngleBracket(const std::string &s) {
 
+    const char a = '#';
     const vector<string> brackets{"<", ">"};
     for (const auto& br: brackets){
-        if (s == br){
+        if ((s.rfind(a, 0)) && (s.find(br) != string::npos)){
             return true;
         }
     }
