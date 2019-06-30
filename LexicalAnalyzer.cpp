@@ -136,6 +136,13 @@ bool LexicalAnalyzer::isComment(const string &s) {
     return false;
 }
 
+bool LexicalAnalyzer::isSpace(const std::string &s) {
+    if ((s.find(" ")) && (!s.find("\r\n"))){
+        return true;
+    }
+    return false;
+}
+
 // Function counts all the characters in file
 int LexicalAnalyzer::charCount(const std::string &s) {
     int counter = 0;
@@ -177,6 +184,55 @@ void LexicalAnalyzer::printRoleOfToken(const string& token) {
     }
     else if(isComment(token)){
         cout << "(identifier, " << token << ")\n";
+    }
+    else if(isEndOfLine(token)){
+        if (token == "\r\n"){
+            cout << "(is windows end of line - \\r\\n)\n";
+        } else{
+            cout << "(is linux/unix end of line - \\n)\n";
+        }
+    }
+    else{
+        throw runtime_error(token);
+    }
+}
+
+void LexicalAnalyzer::printRoleOfToken2(const char& c) {
+
+    string token(1, c);
+
+    if (isOperator(token)){
+        cout << "(is operator, " << token << ")\n";
+    }
+    else if(isRoundBracket(token)){
+        cout << "(separator, " << token << ")\n";
+    }
+    else if(isSquareBracket(token)){
+        cout << "[separator, " << token << "]\n";
+    }
+    else if(isCurlyBracket(token)){
+        cout << "{separator, " << token << "}\n";
+    }
+    else if(isAngleBracket(token)){
+        cout << "<separator, " << token << ">\n";
+    }
+//    else if(isDigit(token)){
+//        cout << "(digit, " << token << ")\n";
+//    }
+    else if(isInteger(token)){
+        cout << "(is integer, " << token << ")\n";
+    }
+    else if(isDouble(token)){
+        cout << "(is double, " << token << ")\n";
+    }
+    else if(isId(token)){
+        cout << "(is id, " << token << ")\n";
+    }
+    else if(isComment(token)){
+        cout << "(identifier, " << token << ")\n";
+    }
+    else if(isSpace(token)){
+        cout << "(space, " << token << ")\n";
     }
     else if(isEndOfLine(token)){
         if (token == "\r\n"){

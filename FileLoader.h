@@ -21,6 +21,7 @@ private:
 
 public:
     //void loadFile(std::string &path);
+    char loadAsChar(std::string& path);
     std::string loadAsString(std::string& path);
     std::array<std::string, 20> loadAsArray(std::string& path);
     std::list<std::string> loadToList(std::string& path);

@@ -18,9 +18,9 @@ int main() {
 
     string path = "";
     cout << "Podaj sciezke do pliku: ";
-    path = "C:\\Users\\EB79OJ\\Projects\\CLionProjects\\compiler\\input.txt";
+    //path = "C:\\Users\\EB79OJ\\Projects\\CLionProjects\\compiler\\input.txt";
     //path = "C:\\Users\\mski\\CLionProjects\\perun\\input.txt";
-    //path = "/home/michal/CLionProjects/perun/input.txt";
+    path = "/home/michal/CLionProjects/perun/input.txt";
     //cin >> path;
     cout << "\r\n" << "Laduje plik: " << path  << " ..." << endl;
 
@@ -30,6 +30,17 @@ int main() {
     LexicalAnalyzer la;
 
     //string a = "+";
+
+    cout << "\nLoading char by char...\n\n";
+    char c;
+    c = loader.loadAsChar(path);
+    //loader.loadAsChar(path);
+
+//    while(c){
+//        cout << c << endl;
+//    }
+//    la.printRoleOfToken2(c);
+    cout << "\n\nLoaded. End\n\n";
 
     vector<string> content = loader.loadToVector(path);
     array<string, 20> arr = loader.loadAsArray(path);

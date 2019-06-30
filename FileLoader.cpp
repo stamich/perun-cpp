@@ -2,8 +2,23 @@
 // Created by Michal S. on 2019-05-07.
 //
 #include "FileLoader.h"
+#include "LexicalAnalyzer.h"
 
 using namespace std;
+
+char FileLoader::loadAsChar(std::string &path) {
+
+    char c;
+    filePath = path;
+    LexicalAnalyzer la;
+    fstream fin(filePath, fstream::in);
+    while (fin >> noskipws >> c){
+        cout << c;
+        la.printRoleOfToken2(c);
+        //return c;
+    }
+    return c;
+}
 
 string FileLoader::loadAsString(std::string &path) {
     filePath = path;

@@ -32,10 +32,12 @@ public:
     bool isId(const std::string& s);
     bool isComment(const std::string& s);
     bool isEndOfLine(const std::string &s);
+    bool isSpace(const std::string& s);
 
     int charCount(const std::string& s);
 
     void printRoleOfToken(const std::string& token);
+    void printRoleOfToken2(const char& token);
 
     void analyze(const std::string& nameOfFile);
 
